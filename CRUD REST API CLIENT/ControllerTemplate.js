@@ -64,14 +64,14 @@
         }
 
         $scope.delete = function(idx) {
-            paquetesSvc.del($scope.AllEntities[idx].Id).then(function (response) {
+            TemplateSvc.del($scope.AllEntities[idx].Id).then(function (response) {
                 if (response.data)
                     $scope.AllEntities.splice(idx, 1);
             })
         }
 
         $scope.filter = function(entityFilter) {
-            paquetesSvc.get(entityFilter).then(function (response) {
+            TemplateSvc.get(entityFilter).then(function (response) {
                 $scope.AllEntities = response.data;
             })
         }
@@ -88,7 +88,7 @@
 
         function activate() {
             $scope.estadoVista = $rootScope.EstadoVistaEnum.Listado;
-            paquetesSvc.get().then(function (response) {
+            TemplateSvc.get().then(function (response) {
                 $scope.AllEntities = response.data;
             })
         }
