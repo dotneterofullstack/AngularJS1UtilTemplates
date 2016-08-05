@@ -1,0 +1,40 @@
+<h1>Entity CROD</h1>
+<div ng-show="estadoVista == $root.EstadoVistaEnum.Edicion || estadoVista == $root.EstadoVistaEnum.Agregado">
+    <h5 ng-show="estadoVista == $root.EstadoVistaEnum.Agregado">Nuevo</h5>
+    <h5 ng-show="estadoVista == $root.EstadoVistaEnum.Edicion ">Editar</h5>
+    <form novalidate name="frmEntity">
+        <!-- Aqui van imputs para la captura de un nuevo Entity -->
+        <input type="button" value="Cancelar" ng-click="cancel()">
+        <input type="button" value="Guardar" ng-disabled="frmEntity.$invalid" ng-click="save(Entity)">
+    </form>
+</div>
+<div ng-show="estadoVista == $root.EstadoVistaEnum.Listado">
+    <a ng-click="add()">Nuevo</a>
+    <form novalidate name="frmFiltro">
+        <table>
+            <thead>
+                <tr>
+                    <!-- Encabezados del grid de Entities -->
+                </tr>
+                <tr>
+                    <td hidden="hidden"></td>
+                    <!-- Imputs de filtrado de Entities -->
+                    <td colspan="2">
+                        <button ng-click="filter(EntityFilter)">Filtrar</button>
+                        <button ng-click="reset()">Mostrar Todos</button>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="entity in AllEntities">
+                    <td hidden="hidden">{{ entity.Id }}</td>
+                    <!-- Datos de cada registro entity -->
+                    <td>
+                        <a ng-click="edit(AllEntities[$index])">Editar</a>
+                        <a ng-click="delete($index)">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
