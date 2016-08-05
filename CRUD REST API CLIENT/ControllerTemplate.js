@@ -6,7 +6,7 @@
         .controller('TemplateCtl', TemplateCtl);
 
     TemplateCtl.$inject = ['$scope', "$rootScope", 'TemplateSvc'];
-    function TemplateCtl($scope, $rootScope, paquetesSvc) {
+    function TemplateCtl($scope, $rootScope, TemplateSvc) {
         $scope.estadoVista = $rootScope.EstadoVistaEnum.Listado;
         $scope.AllEntities = null;
         
